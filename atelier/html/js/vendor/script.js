@@ -47,8 +47,14 @@ $(document).ready(function() {
                   }
                   return this.optional(element) || regexp.test(value);
             },
-            function (regex, input) {                  
+            function (regex, input) { 
+			
+				console.log($(input).attr("data-displayname"));
+				if ($(input).attr("data-displayname")=="votre email") {
+					 return jQuery.validator.format("Erreur");
+				} else {
                   return jQuery.validator.format("Le format du champ {0}, n'est pas valide.", $(input).attr("data-displayname"));
+				}
             }
       );
       	 
